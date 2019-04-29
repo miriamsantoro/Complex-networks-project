@@ -11,7 +11,7 @@ Nello specifico, lo script:
 - 'pca_matrix_best_features' è quello relativo all'appendice **F**.
 
 NB. Se si vogliono riprodurre e salvare i plot senza che MATLAB segni errori, è necessario aggiungere all'interno della cartella 'tot':
-- una cartella chiamata 'plot'
+- una cartella chiamata 'plot';
 - una cartella chiamata 'pca', avente al suo interno le cartelle chiamate:
   - 'rn';
   - 'sn';
