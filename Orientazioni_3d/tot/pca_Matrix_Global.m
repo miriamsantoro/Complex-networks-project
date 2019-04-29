@@ -1,0 +1,139 @@
+load('t_rn.mat');
+load('t_sn.mat');
+load('t_cau.mat');
+load('t_pu.mat');
+load('t_gp.mat');
+load('t_wm.mat');
+load('tg_rn.mat');
+load('tg_sn.mat');
+load('tg_cau.mat');
+load('tg_pu.mat');
+load('tg_gp.mat');
+load('tg_wm.mat');
+
+tot=cell(1,12);
+for i=1:12
+    tot{i}=[t_rn(i,:); t_sn(i,:); t_cau(i,:); t_pu(i,:); t_gp(i,:); t_wm(i,:)];
+end
+
+totg=cell(1,12);
+for l=1:12
+    totg{l}=[tg_rn(l,:); tg_sn(l,:); tg_cau(l,:); tg_pu(l,:); tg_gp(l,:); tg_wm(l,:)];
+end
+
+%% PCA Matrix
+[coeff_cau,score_cau,laten_cau,~,explained_cau]=pca(t_cau);
+figure
+biplot(coeff_cau(:,1:2),'scores',score_cau(:,1:2),'varlabels',...
+    {'glcm_{ene}','glcm_{con}','glcm_{ent}','glcm_{hom}','glcm_{cor}','glcm_{sa}','glcm_{var}',...
+    'glcm_{dis}','glcm_{ac}',...
+    'glrlm_{sre}','glrlm_{lre}','glrlm_{gln}','glrlm_{rln}','glrlm_{rp}','glrlm_{lgre}','glrlm_{hgre}',...
+    'glrlm_{srhge}','glrlm_{lrlge}','glrlm_{glv}','glrlm_{rlv}',...
+    'glszm_{sze}','glszm_{lze}','glszm_{gln}','glszm_{zsn}','glszm_{zp}','glszm_{lgze}','glszm_{hgze}',...
+    'glszm_{szlge}','glszm_{szhge}','glszm_{glv}','glszm_{zsv}',...
+    'ngtdm_{coa}','ngtdm_{con}','ngtdm_{bus}','ngtdm_{com}','ngtdm_{str}'});
+title('PCA Caudate (Matrix)');
+saveas(gcf, 'pca/cau_t.png');
+
+[coeff_gp,score_gp,laten_gp,~,explained_gp]=pca(t_gp);
+figure
+biplot(coeff_gp(:,1:2),'scores',score_gp(:,1:2),'varlabels',...
+    {'glcm_{ene}','glcm_{con}','glcm_{ent}','glcm_{hom}','glcm_{cor}','glcm_{sa}','glcm_{var}',...
+    'glcm_{dis}','glcm_{ac}',...
+    'glrlm_{sre}','glrlm_{lre}','glrlm_{gln}','glrlm_{rln}','glrlm_{rp}','glrlm_{lgre}','glrlm_{hgre}',...
+    'glrlm_{srhge}','glrlm_{lrlge}','glrlm_{glv}','glrlm_{rlv}',...
+    'glszm_{sze}','glszm_{lze}','glszm_{gln}','glszm_{zsn}','glszm_{zp}','glszm_{lgze}','glszm_{hgze}',...
+    'glszm_{szlge}','glszm_{szhge}','glszm_{glv}','glszm_{zsv}',...
+    'ngtdm_{coa}','ngtdm_{con}','ngtdm_{bus}','ngtdm_{com}','ngtdm_{str}'});
+title('PCA Globus Pallidus (Matrix)');
+saveas(gcf, 'pca/gp_t.png');
+
+[coeff_pu,score_pu,laten_pu,~,explained_pu]=pca(t_pu);
+figure
+biplot(coeff_pu(:,1:2),'scores',score_pu(:,1:2),'varlabels',...
+    {'glcm_{ene}','glcm_{con}','glcm_{ent}','glcm_{hom}','glcm_{cor}','glcm_{sa}','glcm_{var}',...
+    'glcm_{dis}','glcm_{ac}',...
+    'glrlm_{sre}','glrlm_{lre}','glrlm_{gln}','glrlm_{rln}','glrlm_{rp}','glrlm_{lgre}','glrlm_{hgre}',...
+    'glrlm_{srhge}','glrlm_{lrlge}','glrlm_{glv}','glrlm_{rlv}',...
+    'glszm_{sze}','glszm_{lze}','glszm_{gln}','glszm_{zsn}','glszm_{zp}','glszm_{lgze}','glszm_{hgze}',...
+    'glszm_{szlge}','glszm_{szhge}','glszm_{glv}','glszm_{zsv}',...
+    'ngtdm_{coa}','ngtdm_{con}','ngtdm_{bus}','ngtdm_{com}','ngtdm_{str}'});
+title('PCA Putamen (Matrix)');
+saveas(gcf, 'pca/pu_t.png');
+
+[coeff_rn,score_rn,laten_rn,~,explained_rn]=pca(t_rn);
+figure
+biplot(coeff_rn(:,1:2),'scores',score_rn(:,1:2),'varlabels',...
+    {'glcm_{ene}','glcm_{con}','glcm_{ent}','glcm_{hom}','glcm_{cor}','glcm_{sa}','glcm_{var}',...
+    'glcm_{dis}','glcm_{ac}',...
+    'glrlm_{sre}','glrlm_{lre}','glrlm_{gln}','glrlm_{rln}','glrlm_{rp}','glrlm_{lgre}','glrlm_{hgre}',...
+    'glrlm_{srhge}','glrlm_{lrlge}','glrlm_{glv}','glrlm_{rlv}',...
+    'glszm_{sze}','glszm_{lze}','glszm_{gln}','glszm_{zsn}','glszm_{zp}','glszm_{lgze}','glszm_{hgze}',...
+    'glszm_{szlge}','glszm_{szhge}','glszm_{glv}','glszm_{zsv}',...
+    'ngtdm_{coa}','ngtdm_{con}','ngtdm_{bus}','ngtdm_{com}','ngtdm_{str}'});
+title('PCA Red Nucleus (Matrix)');
+saveas(gcf, 'pca/rn_t.png');
+
+[coeff_sn,score_sn,laten_sn,~,explained_sn]=pca(t_sn);
+figure
+biplot(coeff_sn(:,1:2),'scores',score_sn(:,1:2),'varlabels',...
+    {'glcm_{ene}','glcm_{con}','glcm_{ent}','glcm_{hom}','glcm_{cor}','glcm_{sa}','glcm_{var}',...
+    'glcm_{dis}','glcm_{ac}',...
+    'glrlm_{sre}','glrlm_{lre}','glrlm_{gln}','glrlm_{rln}','glrlm_{rp}','glrlm_{lgre}','glrlm_{hgre}',...
+    'glrlm_{srhge}','glrlm_{lrlge}','glrlm_{glv}','glrlm_{rlv}',...
+    'glszm_{sze}','glszm_{lze}','glszm_{gln}','glszm_{zsn}','glszm_{zp}','glszm_{lgze}','glszm_{hgze}',...
+    'glszm_{szlge}','glszm_{szhge}','glszm_{glv}','glszm_{zsv}',...
+    'ngtdm_{coa}','ngtdm_{con}','ngtdm_{bus}','ngtdm_{com}','ngtdm_{str}'});
+title('PCA Substantia Nigra (Matrix)');
+saveas(gcf, 'pca/sn_t.png');
+
+[coeff_wm,score_wm,laten_wm,~,explained_wm]=pca(t_wm);
+figure
+biplot(coeff_wm(:,1:2),'scores',score_wm(:,1:2),'varlabels',...
+    {'glcm_{ene}','glcm_{con}','glcm_{ent}','glcm_{hom}','glcm_{cor}','glcm_{sa}','glcm_{var}',...
+    'glcm_{dis}','glcm_{ac}',...
+    'glrlm_{sre}','glrlm_{lre}','glrlm_{gln}','glrlm_{rln}','glrlm_{rp}','glrlm_{lgre}','glrlm_{hgre}',...
+    'glrlm_{srhge}','glrlm_{lrlge}','glrlm_{glv}','glrlm_{rlv}',...
+    'glszm_{sze}','glszm_{lze}','glszm_{gln}','glszm_{zsn}','glszm_{zp}','glszm_{lgze}','glszm_{hgze}',...
+    'glszm_{szlge}','glszm_{szhge}','glszm_{glv}','glszm_{zsv}',...
+    'ngtdm_{coa}','ngtdm_{con}','ngtdm_{bus}','ngtdm_{com}','ngtdm_{str}'});
+title('PCA White Matter (Matrix)');
+saveas(gcf, 'pca/wm_t.png');
+
+
+%% PCA Global
+[coeffg_cau,scoreg_cau,lateng_cau,~,explainedg_cau]=pca(tg_cau);
+figure
+biplot(coeffg_cau(:,1:2),'scores',scoreg_cau(:,1:2),'varlabels',{'g_v','g_s','g_k'});
+title('PCA Caudate (Global)');
+saveas(gcf, 'pca/cau_g.png');
+
+[coeffg_gp,scoreg_gp,lateng_gp,~,explainedg_gp]=pca(tg_gp);
+figure
+biplot(coeffg_gp(:,1:2),'scores',scoreg_gp(:,1:2),'varlabels',{'g_v','g_s','g_k'});
+title('PCA Globus Pallidus (Global)');
+saveas(gcf, 'pca/gp_g.png');
+
+[coeffg_pu,scoreg_pu,lateng_pu,~,explainedg_pu]=pca(tg_pu);
+figure
+biplot(coeffg_pu(:,1:2),'scores',scoreg_pu(:,1:2),'varlabels',{'g_v','g_s','g_k'});
+title('PCA Putamen (Global)');
+saveas(gcf, 'pca/pu_g.png');
+
+[coeffg_rn,scoreg_rn,lateng_rn,~,explainedg_rn]=pca(tg_rn);
+figure
+biplot(coeffg_rn(:,1:2),'scores',scoreg_rn(:,1:2),'varlabels',{'g_v','g_s','g_k'});
+title('PCA Red Nucleus (Global)');
+saveas(gcf, 'pca/rn_g.png');
+
+[coeffg_sn,scoreg_sn,lateng_sn,~,explainedg_sn]=pca(tg_sn);
+figure
+biplot(coeffg_sn(:,1:2),'scores',scoreg_sn(:,1:2),'varlabels',{'g_v','g_s','g_k'});
+title('PCA Substantia Nigra (Global)');
+saveas(gcf, 'pca/sn_g.png');
+
+[coeffg_wm,scoreg_wm,lateng_wm,~,explainedg_wm]=pca(tg_wm);
+figure
+biplot(coeffg_wm(:,1:2),'scores',scoreg_wm(:,1:2),'varlabels',{'g_v','g_s','g_k'});
+title('PCA White Matter (Global)');
+saveas(gcf, 'pca/wm_g.png');
